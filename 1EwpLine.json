@@ -1,0 +1,21 @@
+from telegram.ext import Updater, MessageHandler, Filters
+
+# Your bot's token received via BotFather
+TOKEN = 'your_bot_token_here'
+
+# Message handler function
+def collect_messages(update, context):
+    message = update.message
+    print(message.text)
+
+# Create a bot object
+updater = Updater(TOKEN, use_context=True)
+
+# Get the message manager
+dispatcher = updater.dispatcher
+
+# Register a message handler
+dispatcher.add_handler(MessageHandler(Filters.all, collect_messages))
+
+# Run the bot
+updater.start_polling()
